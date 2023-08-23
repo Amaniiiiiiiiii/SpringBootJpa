@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Details</title>
+</head>
+<body>
+    <h2>Task Details</h2>
+
+    <div>
+        <p>ID: <span th:text="${task.id}"></span></p>
+        <form th:action="@{/tasks/{id}(id=${task.id})}" th:object="${task}" method="post">
+            <label>Description: <input type="text" th:field="*{description}" /></label>
+            <label>Category Name: <input type="text" th:field="*{category.name}" /></label>
+            <button type="submit">Update Task</button>
+        </form>
+    </div>
+
+    <a th:href="@{/tasks}">Back to All Tasks</a>
+</body>
+</html>
